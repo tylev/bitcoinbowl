@@ -9,8 +9,8 @@ var myScroll = new iScroll('pageWrapper', {
 	hScrollbar: false,
 	vScrollbar: false,
     lockDirection: true});
-var page2Scroll = new iScroll('wrapper2', {hScrollbar: false, vScrollbar: false, lockDirection: true });
-var page3Scroll = new iScroll('wrapper3', {hScrollbar: false, vScrollbar: false, lockDirection: true });
+//var page2Scroll = new iScroll('wrapper2', {hScrollbar: false, vScrollbar: false, lockDirection: true });
+//var page3Scroll = new iScroll('wrapper3', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 
 updateLayout();
 
@@ -27,10 +27,10 @@ function updateLayout() {
     $('#pageScroller').css('width', wrapperWidth * 5);
     $('.page').css('width', wrapperWidth);
     myScroll.refresh();
-    setTimeout(function () {
-        page2Scroll.refresh();
-        page3Scroll.refresh();
-    }, 0);
+//    setTimeout(function () {
+//        page2Scroll.refresh();
+//        page3Scroll.refresh();
+//    }, 0);
     myScroll.scrollToPage(currentPage, 0, 0);
 }
 
