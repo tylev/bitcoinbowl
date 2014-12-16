@@ -30,8 +30,7 @@ body {
     float: left;
     -webkit-transform:translate3d(0,0,0);
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    overflow: hidden;
 /*    padding: 20px;*/
 }
 
@@ -178,4 +177,8 @@ a.circler:hover {
     background-color: #444444;
     z-index: 1;
     overflow: visible;
+}
+
+#wrapper2 {
+    position:relative;
 }
