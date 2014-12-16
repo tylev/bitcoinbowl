@@ -179,7 +179,8 @@ a.circler:hover {
     overflow: visible;
 }
 
-#wrapper2 {
+#wrapper2,
+#wrapper3 {
     position:relative;
     height: 100%;
 }

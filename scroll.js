@@ -9,8 +9,8 @@ var myScroll = new iScroll('pageWrapper', {
 	hScrollbar: false,
 	vScrollbar: false,
     lockDirection: true});
-var page2Scroll = new iScroll('wrapper2', {hScrollbar: false, vScrollbar: false, lockDirection: true });
-//var page3Scroll = new iScroll('wrapper3', {hScrollbar: false, vScrollbar: false, lockDirection: true });
+var page2Scroll = new iScroll('wrapper2', {hScrollbar: false, vScrollbar: false, lockDirection: true, bounce:false });
+var page3Scroll = new iScroll('wrapper3', {hScrollbar: false, vScrollbar: false, lockDirection: true, bounce:false });
 
 updateLayout();
 
@@ -28,6 +28,7 @@ function updateLayout() {
     $('.page').css('width', wrapperWidth);
     myScroll.refresh();
     page2Scroll.refresh();
+    page3Scroll.refresh();
 //    setTimeout(function () {
 //        page2Scroll.refresh();
 //        page3Scroll.refresh();
