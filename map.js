@@ -284,27 +284,21 @@ function addMap(selector, zoom, lat, lon, markers, polygon, scroll1, scroll2) {
         google.maps.event.addListener(map, "mousedown", function(e){
             scroll1.disable();
             scroll2.disable();
-            myScroll.scrollToPage(2, 0, 0);
-            console.log('disable');
         });
         
         google.maps.event.addListener(map, "dragstart", function(e){
             scroll1.disable();
             scroll2.disable();
-            scroll1.scrollToPage(2, 0, 0);
-            console.log('disable');
         });
 
         google.maps.event.addListener(map, "mouseup", function(e){
             scroll1.enable();
             scroll2.enable();
-            console.log('enable');
         });
         
         google.maps.event.addListener(map, "dragend", function(e){
             scroll1.enable();
             scroll2.enable();
-            console.log('enable');
         });
         
         
