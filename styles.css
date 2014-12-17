@@ -131,18 +131,29 @@ a.circler:hover {
 }
 
 
-/*
-.swipe {
-    position: fixed;
-    right: 50px;
-    -webkit-animation: swipe-move 1s 1s ease-out forwards;
-    animation-duration: 10s;    
-    -webkit-animation-duration: 10s;
+
+.slide {
+    -webkit-animation: slideit 8s infinite; 
+    height:150px;
+    position: absolute;
+    top: 30px;
+    right: 0;
 }
 
-@-webkit-keyframes swipe-move {
-    100% { right: 500px }
-}*/
+
+@-webkit-keyframes slideit {
+    0% {
+        right: 0;
+    }
+    90% {
+        right: 300px;
+    }
+    100% {
+        right: 0;
+    }
+}
+
+
 
 .bottom40 {
     margin-bottom: 40px;
@@ -183,4 +194,57 @@ a.circler:hover {
 #wrapper3 {
     position:relative;
     height: 100%;
+}
+
+ul.list-inline > li > img {
+    width: 15px;   
+}
+
+#map {
+    height: 400px;
+}
+
+.map-marker-popup {
+    width: 300px;
+    height: 65px;
+    overflow: hidden;
+}
+.map-marker-image {
+    float: left;
+    max-width: 65px;
+    max-height: 65px;
+    margin-right: 10px;
+}
+.map-marker-info {
+    float: left;
+    max-width: 215px;
+    height: 65px;
+    white-space: nowrap;
+    overflow: hidden;
+    color: black;
+    text-align: left;
+}
+.map-marker-address,
+.map-marker-links {
+    color: black;
+    text-align: left;
+}
+
+.map-marker-links > a {
+    color: black;
+}
+
+.map-marker-name {
+    font-size: 18px;
+    font-weight: 400;
+    color: black;
+}
+.map-marker-cat {
+    float: left;
+    margin-right: 4px;
+    margin-top: 4px;
+    font-size: 11px;
+    line-height: 11px;
+    color: black;
+    display: none;
 }
