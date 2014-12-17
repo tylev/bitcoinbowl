@@ -265,7 +265,6 @@ function getMapMarkerContent(marker, m) {
               '<a href="' + m.directions_url + '" target="_blank">Get Directions</a>' + 
           '</div>' +
         '</div>' +
-        '<div class="map-marker-categories">' + m.cats + '</div>' +
       '</div>';
     return html;
 }
@@ -274,55 +273,55 @@ function getMapMarkerContent(marker, m) {
   var root = this;
   var AB = root.AB = {};
 
-  AB.geoTimeout = 1000 * 60 * 60 * 1;
+//  AB.geoTimeout = 1000 * 60 * 60 * 1;
   AB.now = function() {
     return (new Date()).getTime();
   }
-  AB.setLL = function() {
-    var geo = AB.Geo.latestLocation();
-    var $ll = $('#ll');
-    if (geo && geo.coords) {
-      var ll = geo.coords.latitude + ',' + geo.coords.longitude;
-      if ($ll.length) {
-        $ll.val(ll);
-      } else {
-        $('<input>')
-          .attr('type','hidden')
-          .attr('name', 'll')
-          .attr('id', 'll')
-          .attr('value', ll)
-          .appendTo('#navbar-search');
-      }
-    } else {
-      $ll.remove();
-    }
-  };
-  AB.setNear = function() {
-    if (AB.Geo.latestLocation()) {
-      AB.setLL();
-    } else {
-      AB.Geo.requestLocation(function(geo) {
-        AB.setLL();
-        $.getJSON('/api/v1/location-suggest/?ll=' + ll).done(function(data) {
-          if (data && data.near) {
-            $('input.location').val(data.near);
-          }
-        });
-      });
-    }
-  };
+//  AB.setLL = function() {
+//    var geo = AB.Geo.latestLocation();
+//    var $ll = $('#ll');
+//    if (geo && geo.coords) {
+//      var ll = geo.coords.latitude + ',' + geo.coords.longitude;
+//      if ($ll.length) {
+//        $ll.val(ll);
+//      } else {
+//        $('<input>')
+//          .attr('type','hidden')
+//          .attr('name', 'll')
+//          .attr('id', 'll')
+//          .attr('value', ll)
+//          .appendTo('#navbar-search');
+//      }
+//    } else {
+//      $ll.remove();
+//    }
+//  };
+//  AB.setNear = function() {
+//    if (AB.Geo.latestLocation()) {
+//      AB.setLL();
+//    } else {
+//      AB.Geo.requestLocation(function(geo) {
+//        AB.setLL();
+//        $.getJSON('/api/v1/location-suggest/?ll=' + ll).done(function(data) {
+//          if (data && data.near) {
+//            $('input.location').val(data.near);
+//          }
+//        });
+//      });
+//    }
+//  };
   AB.setup = function() {
-    AB.setNear();
+//    AB.setNear();
 
-    $.ajaxSetup({
-        crossDomain: false,
-        beforeSend: function(xhr, settings) {
-            if (!AB.Util.csrfSafeMethod(settings.type)) {
-                xhr.setRequestHeader("X-CSRFToken", $('meta[name="csrf-token"]').attr('content'));
-            }
-            xhr.setRequestHeader("Authorization", "Token 0ccff150ed4633136f04eab2d8454d928e6ff584");
-        }
-    });
+//    $.ajaxSetup({
+//        crossDomain: false,
+//        beforeSend: function(xhr, settings) {
+//            if (!AB.Util.csrfSafeMethod(settings.type)) {
+//                xhr.setRequestHeader("X-CSRFToken", $('meta[name="csrf-token"]').attr('content'));
+//            }
+//            xhr.setRequestHeader("Authorization", "Token 0ccff150ed4633136f04eab2d8454d928e6ff584");
+//        }
+//    });
   };
   AB.addMap = function(selector, zoom, lat, lon, markers, polygon) {
     function initialize() {
@@ -514,79 +513,79 @@ function getMapMarkerContent(marker, m) {
       selector.change(updatePlace);
       selector.blur(updatePlace);
   };
-  var Geo = AB.Geo = { 
-    latestLocation: function() {
-      var cookie = Util.getCookie('geo');
-      try {
-        var geo = JSON.parse(cookie);
-      } catch (e) {
-        console.log(e);
-      }   
-      return geo;
-    },  
-    requestLocation: function(cb) {
-      var now = new Date();
-      var geo = this.latestLocation();
-      if (geo) {
-        try {
-            var then = new Date(geo.timestamp).getTime();
-            if (now - then < AB.geoTimeout) {
-                return;
-            }   
-        } catch (e) {
-            console.log(e);
-        }   
-      }   
-      var that = this;
-      var now = AB.now();
-      var then = AB.Util.getCookie('geo_timestamp');
-      if (navigator.geolocation 
-          && (then == null || now - then > AB.geoTimeout)) {
-        var options = {
-          enableHighAccuracy: true,
-          timeout: 5000,
-          maximumAge: 0
-        };
-        AB.Util.setCookie('geo_timestamp', AB.now(), 1); 
-        navigator.geolocation.getCurrentPosition(function(geo) {
-          that.postPosition(geo, cb);
-        }, function(err) { }, options);
-      }   
-    },  
-    postPosition: function(geo, cb) {
-      Util.setCookie('geo', JSON.stringify(geo), 1); 
-      cb(geo);
-    }   
-  };
-  var Util = AB.Util = {
-      csrfSafeMethod: function(method) {
-          return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-      },
-      setCookie: function(c_name, value, exdays) {
-          var exdate = new Date();
-          exdate.setDate(exdate.getDate() + exdays);
-          var c_value = escape(value) + ((exdays===null) ? "" : "; expires="+exdate.toUTCString());
-          document.cookie=c_name + "=" + c_value;
-      },
-      getCookie: function(c_name) {
-          var c_value = document.cookie;
-          var c_start = c_value.indexOf(" " + c_name + "=");
-          if (c_start == -1) {
-              c_start = c_value.indexOf(c_name + "=");
-          }
-          if (c_start == -1) {
-              c_value = null;
-          } else {
-              c_start = c_value.indexOf("=", c_start) + 1;
-              var c_end = c_value.indexOf(";", c_start);
-              if (c_end == -1) {
-              c_end = c_value.length;
-              }
-              c_value = unescape(c_value.substring(c_start,c_end));
-          }
-          return c_value;
-      }
-  };
+//  var Geo = AB.Geo = { 
+//    latestLocation: function() {
+//      var cookie = Util.getCookie('geo');
+//      try {
+//        var geo = JSON.parse(cookie);
+//      } catch (e) {
+//        console.log(e);
+//      }   
+//      return geo;
+//    },  
+//    requestLocation: function(cb) {
+//      var now = new Date();
+//      var geo = this.latestLocation();
+//      if (geo) {
+//        try {
+//            var then = new Date(geo.timestamp).getTime();
+//            if (now - then < AB.geoTimeout) {
+//                return;
+//            }   
+//        } catch (e) {
+//            console.log(e);
+//        }   
+//      }   
+//      var that = this;
+//      var now = AB.now();
+//      var then = AB.Util.getCookie('geo_timestamp');
+//      if (navigator.geolocation 
+//          && (then == null || now - then > AB.geoTimeout)) {
+//        var options = {
+//          enableHighAccuracy: true,
+//          timeout: 5000,
+//          maximumAge: 0
+//        };
+//        AB.Util.setCookie('geo_timestamp', AB.now(), 1); 
+//        navigator.geolocation.getCurrentPosition(function(geo) {
+//          that.postPosition(geo, cb);
+//        }, function(err) { }, options);
+//      }   
+//    },  
+//    postPosition: function(geo, cb) {
+//      Util.setCookie('geo', JSON.stringify(geo), 1); 
+//      cb(geo);
+//    }   
+//  };
+//  var Util = AB.Util = {
+//      csrfSafeMethod: function(method) {
+//          return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+//      },
+//      setCookie: function(c_name, value, exdays) {
+//          var exdate = new Date();
+//          exdate.setDate(exdate.getDate() + exdays);
+//          var c_value = escape(value) + ((exdays===null) ? "" : "; expires="+exdate.toUTCString());
+//          document.cookie=c_name + "=" + c_value;
+//      },
+//      getCookie: function(c_name) {
+//          var c_value = document.cookie;
+//          var c_start = c_value.indexOf(" " + c_name + "=");
+//          if (c_start == -1) {
+//              c_start = c_value.indexOf(c_name + "=");
+//          }
+//          if (c_start == -1) {
+//              c_value = null;
+//          } else {
+//              c_start = c_value.indexOf("=", c_start) + 1;
+//              var c_end = c_value.indexOf(";", c_start);
+//              if (c_end == -1) {
+//              c_end = c_value.length;
+//              }
+//              c_value = unescape(c_value.substring(c_start,c_end));
+//          }
+//          return c_value;
+//      }
+//  };
 
 
 var polygon = [
@@ -595,6 +594,6 @@ var polygon = [
     AB.setup();
 //    AB.addLocationSearch($('input.location'));
 //    AB.addPlaceSearch($('input.term'));
-    AB.addMap($('#map'), 5, 27.6648274, -81.5157535, json, polygon);
+    AB.addMap($('#map'), 6, 27.6648274, -81.5157535, json, polygon);
 
 }).call(this);
