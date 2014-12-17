@@ -301,7 +301,23 @@ function addMap(selector, zoom, lat, lon, markers, polygon, scroll1, scroll2) {
             scroll2.enable();
         });
         
-        
+        if (navigator.geolocation) {        
+        //Use HTML5 Geolocation API To Get Current Position      
+            navigator.geolocation.getCurrentPosition(function(position){        
+            //Get Latitude From Geolocation API      
+                var latitude = position.coords.latitude;        
+                //Get Longitude From Geolocation API      
+                var longitude = position.coords.longitude;        
+                //Define New Google Map With Lat / Lon      
+                var coords = new google.maps.LatLng(latitude, longitude);        
+                //Specify Google Map Options               
+                var marker = new google.maps.Marker({                
+                    position: coords,                
+                    map: map,
+                    icon: '/bluedot.png'
+                });        
+            });  
+        } 
       $.each(markers, function(i, m) {
         if (m.lat && m.lon) {
           var loc = new google.maps.LatLng(m.lat, m.lon);
