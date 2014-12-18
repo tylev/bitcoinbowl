@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Bitcoin Bowl 101</title>
 </head>
 <body>
     <div class="header">
@@ -12,7 +13,10 @@
             <h1>Bitcoin Bowl 101</h1>
         </div>
     </div>
-    <div class="frame">
+    
+    <div id="cont" class="center">
+            <img src="iphone6.png" class="iphone"> 	 	
+            <div class="frame">
 
         <div id="pageWrapper">
             <div id="pageScroller">
@@ -41,11 +45,12 @@
                         </div>
                     </div>
                     <div class="row top20 ">
-                        <div class="col-xs-12">
+                        <div class="col-xs-6 right">
                             <a href="https://play.google.com/store/apps/details?id=com.airbitz">
                                 <img src="https://airbitz.co/static/img/available-on-android.png">
                             </a>
-
+                        </div>
+                        <div class="col-xs-6 left">
                             <a href="https://itunes.apple.com/us/app/airbitz/id843536046?mt=8">
                                 <img src="https://airbitz.co/static/img/available-on-apple-app-store.png">
                             </a>
@@ -126,8 +131,10 @@
                             <div class="row">
                                 <div class="col-xs-12 ">
                                     <h3 class="light">Or, buy Bitcoin in person at these locations:</h3>
-                                    <img src="map.png">
                                 </div>
+                            </div>
+                            <div class="row">
+                                <img src="map.png">
                             </div>
                         </div>
                     </div>
@@ -156,7 +163,7 @@
                                     <img src="greenbench.png">
                                 </div>
                                 <div class="col-xs-9 left">
-                                    <h4 class="light"><b>20% off</b> at Green Bench | <a href="https://goo.gl/maps/FR5cf">Map</a></h4>
+                                    <h4 class="light"><b>20% off</b> at Green Bench | <a href="https://goo.gl/maps/FR5cf" target="_blank">Map</a></h4>
                                 </div>
                             </div>
                             <div class="row top5">
@@ -164,13 +171,11 @@
                                     <img src="amsterdam.png">
                                 </div>
                                 <div class="col-xs-9 left">
-                                    <h4 class="light"><b>$1 beer</b> at Amsterdam | <a href="https://goo.gl/maps/OBfyD">Map</a></h4>
+                                    <h4 class="light"><b>$1 beer</b> at Amsterdam | <a href="https://goo.gl/maps/OBfyD" target="_blank">Map</a></h4>
                                 </div>
                             </div>
                             <div class="row top20">
-                                <div class="col-xs-12">
-                                    <div id="map"></div>
-                                </div>
+                                <div id="map"></div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12">
@@ -289,10 +294,11 @@
         </div>
 
     </div>
+
+    </div>
 <script src="jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQM9A_PNqb91sCmjHZ9omz6xD32T2V054"> </script>
 <script src="iscroll.js"></script>
 <script src="map.js"></script>
-
 </body>
 </html>

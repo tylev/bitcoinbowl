@@ -1,13 +1,19 @@
 body {
     font-family: 'Open Sans', sans-serif;
     color: white;
+    background: #66cdcc;
+    background: -moz-linear-gradient(-45deg, #66cdcc 0%, #336799 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #66cdcc), color-stop(100%, #336799));
+    background: -webkit-linear-gradient(-45deg, #66cdcc 0%, #336799 100%);
+    background: -o-linear-gradient(-45deg, #66cdcc 0%, #336799 100%);
+    background: -ms-linear-gradient(-45deg, #66cdcc 0%, #336799 100%);
+    background: linear-gradient(-45deg, #66cdcc 0%, #336799 100%);
 }
 
 .row {
     margin-left: 0;
     margin-right: 0;
 }
-
 .page h1,
 .page h2
 {
@@ -23,7 +29,15 @@ body {
     border-bottom: solid 1px #FFFFFF;
 }
 
-
+.frame {
+    position:absolute;
+    top:172px;
+/*    right:0;*/
+/*    bottom:calc(60px + 667px);*/
+    height: 540px;
+    left: calc(50% - 152px);
+    width: 305px;
+}
 
 .page {
     float: left;
@@ -247,43 +261,4 @@ ul.list-inline > li > img {
     line-height: 11px;
     color: black;
     display: none;
-}
-
-
-
-@media only screen and (min-device-width : 320px) and (max-device-width : 667px) {
-    .frame {
-        position:absolute;
-        top:60px;
-        right:0;
-        bottom:0;
-        left:0;
-    }
-    .iphone {
-        display: none;
-    }
-}
-
-
-
-@media only screen and (min-width : 668px) {
-    body {
-        background: #66cdcc;
-        background: -moz-linear-gradient(-45deg, #66cdcc 0%, #336799 100%);
-        background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #66cdcc), color-stop(100%, #336799));
-        background: -webkit-linear-gradient(-45deg, #66cdcc 0%, #336799 100%);
-        background: -o-linear-gradient(-45deg, #66cdcc 0%, #336799 100%);
-        background: -ms-linear-gradient(-45deg, #66cdcc 0%, #336799 100%);
-        background: linear-gradient(-45deg, #66cdcc 0%, #336799 100%);
-    }
-    .frame {
-        position:absolute;
-        top:172px;
-        height: 540px;
-        left: calc(50% - 152px);
-        width: 305px;
-    }
-    .iphone {
-        width:390px;
-    }
 }
