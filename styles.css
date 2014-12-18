@@ -3,62 +3,24 @@ body {
     color: white;
 }
 
-.row {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.page h1,
-.page h2
-{
-    margin-top: 0px;
-}
 .light {
     font-weight: 300;
 } 
-.page hr {
-    height: 2px;
-    background-color: #E6E7E8;
-    border: none;
-    border-bottom: solid 1px #FFFFFF;
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 20px;
 }
-
-
 
 .page {
-    float: left;
-    -webkit-transform:translate3d(0,0,0);
-    height: 100%;
-    overflow: hidden;
-/*    padding: 20px;*/
+    padding-top: 30px;
+    padding-bottom: 70px;
 }
 
-#pageWrapper {
-    position:absolute;
-    z-index:1;
-    overflow:hidden;
-    top:0;
-    right:0;
-    bottom:0;
-    left:0;
-}
-
-#wrapper {
-    position:absolute;
-    z-index:1;
-    top:0px;
-    bottom:0px;
-    left:0px;
-    right:0px;
-    overflow:auto;
-}
-
-.scroller {
-	position:absolute; z-index:1;
-	-webkit-tap-highlight-color:rgba(0,0,0,0);
-	width:100%;
-	padding:0;
-    overflow-x: hidden;
+.btn-lg {
+    padding: 15px 25px;
+    font-size: 28px;
 }
 
 .center {
@@ -77,18 +39,37 @@ img {
     text-align: right;
 }
 
-.top50 {
-    margin-top: 50px;
+.top40 {
+    padding-top: 40px;
 }
 
 .top20 {
-    margin-top: 20px;
+    padding-top: 20px;
 }
 
+.bottom60 {
+    padding-bottom: 60px;
+} 
+.top5 {
+    margin-top: 5px;
+}
+.top60 {
+    margin-top: 60px;
+}
 .head {
-    margin-top: 20px;
+    padding-top: 20px;
 }
 
+.max300 {
+    max-width: 500px;
+}
+
+.max125 {
+    max-width: 125px;
+}
+.max200 {
+    max-width: 200px;
+}
 a {
     color: white;
 }
@@ -96,62 +77,6 @@ a {
 a:hover, a:active, a:focus {
     color: inherit;
 }
-.circler {
-    display: inline-block;
-    border: 1px solid white;
-    border-radius: 50%;
-    font-size: 56px;
-    line-height: 43px;
-    font-weight: 100;
-    height: 56px;
-    width: 56px;
-    padding-left: 5px;
-}
-
-.circlel {
-display: inline-block;
-    border: 1px solid white;
-    border-radius: 50%;
-    font-size: 56px;
-    line-height: 43px;
-    font-weight: 100;
-    height: 56px;
-    width: 56px;
-    padding-right: 5px;
-}
-
-a.circlel:hover, 
-a.circler:hover {
-    text-decoration: none;
-}
-
-.top5 {
-    margin-top: 5px;
-}
-
-
-
-.slide {
-    -webkit-animation: slideit 8s infinite; 
-    height:150px;
-    position: absolute;
-    top: 30px;
-    right: 0;
-}
-
-
-@-webkit-keyframes slideit {
-    0% {
-        right: 0;
-    }
-    90% {
-        right: 300px;
-    }
-    100% {
-        right: 0;
-    }
-}
-
 
 
 .bottom40 {
@@ -159,42 +84,10 @@ a.circler:hover {
 }
 
 .headerimg {
-    height: 50px;
-    padding: 0;
-    margin-top: -17px;
-    margin-left: 10px;
-    z-index: 2;
+    height: 200px;
+    margin-top: 100px;
 }
 
-.header h1{
-    display: inline;
-    z-index: 4;
-    line-height: 57px;
-    margin-top: 10px;
-    padding-left: 10px;
-}
-
-.header {
-    background-color: #333333;
-    height: 60px;
-}
-
-.scrim {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    height: 30px;
-    background-color: #444444;
-    z-index: 1;
-    overflow: visible;
-    text-align: center;
-}
-
-#wrapper2,
-#wrapper3 {
-    position:relative;
-    height: 100%;
-}
 
 ul.list-inline > li > img {
     width: 15px;   
@@ -249,41 +142,29 @@ ul.list-inline > li > img {
     display: none;
 }
 
-
-
-@media only screen and (min-device-width : 320px) and (max-device-width : 667px) {
-    .frame {
-        position:absolute;
-        top:60px;
-        right:0;
-        bottom:0;
-        left:0;
+@media only screen and (min-width : 768px) {
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+        padding-top: 30px;
     }
-    .iphone {
-        display: none;
+
+    .page {
+        padding-top: 30px;
+        padding-bottom: 100px;
+    }
+    .top5 > div > h4.light {
+        font-size: 22px;
+        padding-top: 10px
     }
 }
 
-
-
-@media only screen and (min-width : 668px) {
-    body {
-        background: #66cdcc;
-        background: -moz-linear-gradient(-45deg, #66cdcc 0%, #336799 100%);
-        background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #66cdcc), color-stop(100%, #336799));
-        background: -webkit-linear-gradient(-45deg, #66cdcc 0%, #336799 100%);
-        background: -o-linear-gradient(-45deg, #66cdcc 0%, #336799 100%);
-        background: -ms-linear-gradient(-45deg, #66cdcc 0%, #336799 100%);
-        background: linear-gradient(-45deg, #66cdcc 0%, #336799 100%);
+@media only screen and (min-width : 1200px) {
+    .top5 > div > h4.light {
+        font-size: 28px;
+        padding-top: 10px
     }
-    .frame {
-        position:absolute;
-        top:172px;
-        height: 540px;
-        left: calc(50% - 152px);
-        width: 305px;
-    }
-    .iphone {
-        width:390px;
+    h3 {
+        font-size: 30px;   
     }
 }

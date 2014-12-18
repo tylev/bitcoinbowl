@@ -267,7 +267,7 @@ function getMapMarkerContent(marker, m) {
     return html;
 }
 
-function addMap(selector, zoom, lat, lon, markers, polygon, scroll1, scroll2) {
+function addMap(selector, zoom, lat, lon, markers, polygon) {
     function initialize() {
       var mapOptions = {
         center: new google.maps.LatLng(lat, lon),
@@ -281,25 +281,6 @@ function addMap(selector, zoom, lat, lon, markers, polygon, scroll1, scroll2) {
       var map = new google.maps.Map(selector[0], mapOptions);
 
       var infowindow = new google.maps.InfoWindow();
-        google.maps.event.addListener(map, "mousedown", function(e){
-            scroll1.disable();
-            scroll2.disable();
-        });
-        
-        google.maps.event.addListener(map, "dragstart", function(e){
-            scroll1.disable();
-            scroll2.disable();
-        });
-
-        google.maps.event.addListener(map, "mouseup", function(e){
-            scroll1.enable();
-            scroll2.enable();
-        });
-        
-        google.maps.event.addListener(map, "dragend", function(e){
-            scroll1.enable();
-            scroll2.enable();
-        });
         
         if (navigator.geolocation) {        
         //Use HTML5 Geolocation API To Get Current Position      
@@ -365,49 +346,8 @@ function addMap(selector, zoom, lat, lon, markers, polygon, scroll1, scroll2) {
     google.maps.event.addDomListener(window, 'load', initialize);
   };
 
-function updateLayout() {
-
-    var currentPage = 0;
-
-    if (wrapperWidth > 0) {
-        currentPage = - Math.ceil( $('#pageScroller').position().left / wrapperWidth);
-    }
-
-    wrapperWidth = $('#pageWrapper').width();
-
-    $('#pageScroller').css('width', wrapperWidth * 5);
-    $('.page').css('width', wrapperWidth);
-    myScroll.refresh();
-    page2Scroll.refresh();
-    page3Scroll.refresh();
-//    
-    myScroll.scrollToPage(currentPage, 0, 0);
-}
-
-// The wrapperWidth before orientationChange. Used to identify the current page number in updateLayout();
-wrapperWidth = 0;
-
-var myScroll = new iScroll('pageWrapper', {
-	snap: true,
-	momentum: false,
-	hScrollbar: false,
-	vScrollbar: false,
-    lockDirection: true});
-
-
-var page2Scroll = new iScroll('wrapper2', {hScrollbar: false, vScrollbar: false, lockDirection: true, bounce:false });
-var page3Scroll = new iScroll('wrapper3', {hScrollbar: false, vScrollbar: false, lockDirection: true, bounce:false });
-
-
-
-
-document.addEventListener("orientationchange", updateLayout);
-
 $(function() { 
-    setTimeout(function () {
-       updateLayout();
-    }, 10);
-    addMap($('#map'), 6, 27.6648274, -81.5157535, markersJSON, [{}], myScroll, page3Scroll);
+    addMap($('#map'), 6, 27.6648274, -81.5157535, markersJSON, [{}]);
 });
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
