@@ -61,9 +61,14 @@ img {
 }
 
 .max300 {
+    width: 100%;
     max-width: 500px;
 }
 
+.nopadrl > div {
+    padding-left: 10px;
+    padding-right: 10px;
+}
 .max125 {
     max-width: 125px;
 }
