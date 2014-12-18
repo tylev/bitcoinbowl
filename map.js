@@ -347,7 +347,7 @@ function addMap(selector, zoom, lat, lon, markers, polygon) {
   };
 
 $(function() { 
-    addMap($('#map'), 6, 27.6648274, -81.5157535, markersJSON, [{}]);
+    addMap($('#map'), 10, 27.768238, -82.653324, markersJSON, [{}]);
 });
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
