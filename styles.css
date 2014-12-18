@@ -66,9 +66,10 @@ img {
 }
 
 .nopadrl > div {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0;
+    padding-right: 0;
 }
+
 .max125 {
     max-width: 125px;
 }
